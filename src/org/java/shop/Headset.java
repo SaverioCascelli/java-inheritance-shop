@@ -39,4 +39,16 @@ public class Headset extends Product{
                 ", color=" + color+
                 '}';
     }
+    public void setDiscount() {
+        double discount = .02;
+        if(!wireless){
+            discount = .07;
+        }
+        super.setDiscount(discount);
+    }
+    @Override
+    public double discountedPrice() {
+        setDiscount();
+        return super.discountedPrice();
+    }
 }

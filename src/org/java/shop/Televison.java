@@ -40,4 +40,16 @@ public class Televison extends Product{
                 ", smart=" + smart +
                 '}';
     }
+    public void setDiscount() {
+        double discount = .02;
+        if(!smart){
+            discount = .10;
+        }
+        super.setDiscount(discount);
+    }
+    @Override
+    public double discountedPrice() {
+        setDiscount();
+        return super.discountedPrice();
+    }
 }

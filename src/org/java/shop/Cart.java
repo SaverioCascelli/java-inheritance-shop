@@ -13,7 +13,7 @@ public class Cart {
         Scanner scan = new Scanner(System.in);
         int choice;
         boolean exit = false;
-        Product prodArr[] = new Product[1];
+        Product prodArr[] = new Product[3];
         for (int i = 0; i < prodArr.length; i++) {
 
             System.out.println("Inserisci il nome del prodotto:");
@@ -27,6 +27,7 @@ public class Cart {
             System.out.println("Cosa stai cercando?");
             System.out.println("Premi 1 per Smartphone, 2 per Headset, 3 per Televisione:");
             choice =   Integer.parseInt(scan.nextLine());
+
             switch (choice){
                 case 1:{
                     System.out.println("Inserire il codice imei:");
@@ -62,11 +63,18 @@ public class Cart {
             };
 
         }
+        System.out.println("Possiedi una carta fedeltà? 1:sì , 2:no");
+        int fedelity = Integer.parseInt(scan.nextLine());
+        boolean boolFedelity = fedelity == 1 ? true : false;
         double totalPrice = 0;
         for (int i = 0; i < prodArr.length; i++) {
             System.out.println(prodArr[i]);
-            totalPrice += prodArr[i].generateTaxedPrice();
+            if(boolFedelity){
+                totalPrice += prodArr[i].discountedPrice();
+                System.out.println("Premium discount " + prodArr[i].getDiscount() * 100 +  "%");
+            }else totalPrice += prodArr[i].generateTaxedPrice();
         }
+        System.out.println("Utente " + (boolFedelity ? "Premium" : "Standard"));
         System.out.println("Totale Carrello : " + totalPrice + "€");
         scan.close();
 

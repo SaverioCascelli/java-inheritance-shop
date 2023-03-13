@@ -9,6 +9,7 @@ public class Product {
     private String description;
     private double price;
     private double tax;
+    private double discount;
 
     //    *****************CONSTRUCTOR***********************
     public Product(String name, String description, double price, double tax) {
@@ -16,14 +17,20 @@ public class Product {
         this.description = description;
         this.price = price;
         this.tax = tax;
+        this.discount = 0.02;
         setBarCode();
     }
 
-    public Product() {
-        this(null,null,0,0);
-    }
 
     //    ******************GETTERS & SETTERS*****************
+
+    public double getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(double discount) {
+        this.discount = discount;
+    }
 
     public String getBarCode() {
         return convertCode();
@@ -68,6 +75,11 @@ public class Product {
     }
     //    ******************METHODS******************
 
+    public double discountedPrice(){
+        double discountedprice;
+        discountedprice = generateTaxedPrice() - (generateTaxedPrice() * discount);
+        return discountedprice;
+    }
 
     @Override
     public String toString() {
