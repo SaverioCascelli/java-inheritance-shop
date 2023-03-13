@@ -9,7 +9,6 @@ public class Product {
     private String description;
     private double price;
     private double tax;
-    private double discount;
 
     //    *****************CONSTRUCTOR***********************
     public Product(String name, String description, double price, double tax) {
@@ -17,20 +16,12 @@ public class Product {
         this.description = description;
         this.price = price;
         this.tax = tax;
-        this.discount = 0.02;
         setBarCode();
     }
 
 
     //    ******************GETTERS & SETTERS*****************
 
-    public double getDiscount() {
-        return discount;
-    }
-
-    public void setDiscount(double discount) {
-        this.discount = discount;
-    }
 
     public String getBarCode() {
         return convertCode();
@@ -77,8 +68,12 @@ public class Product {
 
     public double discountedPrice(){
         double discountedprice;
-        discountedprice = generateTaxedPrice() - (generateTaxedPrice() * discount);
+        discountedprice = generateTaxedPrice() - (generateTaxedPrice() * getDiscount());
         return discountedprice;
+    }
+
+    public double getDiscount(){
+        return 0.02;
     }
 
     @Override
