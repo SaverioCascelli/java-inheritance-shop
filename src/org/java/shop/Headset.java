@@ -2,9 +2,9 @@ package org.java.shop;
 
 public class Headset extends Product{
     private String color;
-    private String wireless;
+    private Boolean wireless;
 
-    public Headset(String name, String description, double price, double tax, String color, String wireless) {
+    public Headset(String name, String description, double price, double tax, String color, boolean wireless) {
         super(name, description, price, tax);
         this.color = color;
         this.wireless = wireless;
@@ -18,11 +18,11 @@ public class Headset extends Product{
         this.color = color;
     }
 
-    public String getWireless() {
+    public Boolean getWireless() {
         return wireless;
     }
 
-    public void setWireless(String wireless) {
+    public void setWireless(boolean wireless) {
         this.wireless = wireless;
     }
     @Override
